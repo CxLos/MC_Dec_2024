@@ -35,7 +35,7 @@ df.columns = df.columns.str.strip()
 # Define a discrete color sequence
 color_sequence = px.colors.qualitative.Plotly
 
-# Filtered df where 'Date of Activity:' is in November
+# Filtered df where 'Date of Activity:' is in December
 df = df[df['Date of Activity:'].dt.month == 12]
 
 # print(df_m.head())
