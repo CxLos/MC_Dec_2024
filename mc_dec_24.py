@@ -231,7 +231,7 @@ app.layout = html.Div(
         className='divv', 
         children=[ 
         html.H1(
-            'MarCom Report November 2024', 
+            'MarCom Report December 2024', 
             className='title'),
 
                     html.Div(
@@ -239,11 +239,11 @@ app.layout = html.Div(
             children=[
                 html.A(
                 'Home Page',
-                href='https://landing-page-nov-2024.onrender.com',
+                href='https://landing-page-dec-24.onrender.com',
                 className='btn'),
                 html.A(
                 'Repo',
-                href='https://github.com/CxLos/MC_Nov_2024',
+                href='https://github.com/CxLos/MC_Dec_2024',
                 className='btn'),
             ]),
     ]),    
