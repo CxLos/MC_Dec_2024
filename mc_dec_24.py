@@ -92,6 +92,9 @@ df.rename(columns={"Purpose of the activity (please only list one):": "Purpose"}
 # Rename 'Please select the type of product(s):' to 'Product Type'
 df.rename(columns={"Please select the type of product(s):": "Product Type"}, inplace=True)
 
+# Rename 'Please select the type of product(s):' to 'Product Type'
+df.rename(columns={"Activity duration (hours):": "Activity duration"}, inplace=True)
+
 # Fill Missing Values
 df['Please provide public information:'] = df['Please provide public information:'].fillna('N/A')
 df['Please explain event-oriented:'] = df['Please explain event-oriented:'].fillna('N/A')
@@ -114,12 +117,12 @@ df_product_type = df.groupby('Product Type').size().reset_index(name='Count')
 
 # "Activity Duration" dataframe:
 # Remove the word 'hours' from the 'Activity duration:' column
-df['Activity duration:'] = df['Activity duration:'].str.replace(' hours', '')
-df['Activity duration:'] = df['Activity duration:'].str.replace(' hour', '')
-df['Activity duration:'] = pd.to_numeric(df['Activity duration:'], errors='coerce')
+df['Activity duration'] = df['Activity duration'].str.replace(' hours', '')
+df['Activity duration'] = df['Activity duration'].str.replace(' hour', '')
+df['Activity duration'] = pd.to_numeric(df['Activity duration'], errors='coerce')
 
-df_activity_duration = df.groupby('Activity duration:').size().reset_index(name='Count')
-sum_activity_duration = df['Activity duration:'].sum()
+df_activity_duration = df.groupby('Activity duration').size().reset_index(name='Count')
+sum_activity_duration = df['Activity duration'].sum()
 # print('Total Activity Duration:', sum_activity_duration, 'hours')
 
 # "Person completing this form:" dataframe:
