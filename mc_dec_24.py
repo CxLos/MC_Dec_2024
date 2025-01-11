@@ -121,8 +121,8 @@ df['Activity duration'] = df['Activity duration'].str.replace(' hours', '')
 df['Activity duration'] = df['Activity duration'].str.replace(' hour', '')
 df['Activity duration'] = pd.to_numeric(df['Activity duration'], errors='coerce')
 
-df_activity_duration = df.groupby('Activity duration').size().reset_index(name='Count')
-sum_activity_duration = df['Activity duration'].sum()
+marcom_hours = df.groupby('Activity duration').size().reset_index(name='Count')
+marcom_hours = df['Activity duration'].sum()
 # print('Total Activity Duration:', sum_activity_duration, 'hours')
 
 # "Person completing this form:" dataframe:
@@ -281,25 +281,62 @@ html.Div(
     className='row1',
     children=[
         html.Div(
-            className='graph1',
+            className='graph11',
             children=[
             html.Div(
                 className='high1',
                 children=['MarCom Events:']
             ),
             html.Div(
-                className='highs-activity',
+                className='circle',
                 children=[
-                    html.H1(
-                        className='high2',
-                        children=[marcom_events]
+                    html.Div(
+                        className='hilite',
+                        children=[
+                            html.H1(
+                            className='high2',
+                            children=[marcom_events]
                     ),
+                        ]
+                    )
+ 
                 ],
             ),
             ]
         ),
         html.Div(
-            className='graph2',
+            className='graph22',
+            children=[
+            html.Div(
+                className='high1',
+                children=['MarCom Events:']
+            ),
+            html.Div(
+                className='circle',
+                children=[
+                    html.Div(
+                        className='hilite',
+                        children=[
+                            html.H1(
+                            className='high2',
+                            children=[marcom_hours]
+                    ),
+                        ]
+                    )
+ 
+                ],
+            ),
+            ]
+        ),
+    ]
+),
+
+# ROW 3
+html.Div(
+    className='row2',
+    children=[
+        html.Div(
+            className='graph3',
             children=[
             # 'Which MarCom activity category are you submitting an entry for?' bar chart
             dcc.Graph(
@@ -325,6 +362,34 @@ html.Div(
                 )
             )
             ],
+        ),
+        html.Div(
+            className='graph4',
+            children=[                
+                # Person completing this form: bar chart
+                dcc.Graph(
+                    figure=px.bar(
+                        df_person,
+                        x='Person completing this form:',
+                        y='Count',
+                        color='Person completing this form:',
+                        text='Count'
+                    ).update_layout(
+                        title='Person Completing Form',
+                        xaxis_title='Person',
+                        yaxis_title='Count',
+                        title_x=0.5,
+                        font=dict(
+                            family='Calibri',
+                            size=17,
+                            color='black'
+                        )
+                    ).update_traces(
+                        textposition='auto',
+                        hovertemplate='<b>%{x}</b><br><b>Count</b>: %{y}<extra></extra>'
+                    )
+                )
+            ]
         )
     ]
 ),
@@ -378,59 +443,6 @@ html.Div(
                     ]
                 )
    
-            ]
-        )
-    ]
-),
-
-# ROW 3
-html.Div(
-    className='row2',
-    children=[
-        html.Div(
-            className='graph1',
-            children=[
-            html.Div(
-                className='high1',
-                children=['Total MarCom Hours:']
-            ),
-            html.Div(
-                className='highs-activity',
-                children=[
-                    html.H1(
-                        className='high2',
-                        children=[sum_activity_duration]
-                    ),
-                ],
-            ),
-            ]
-        ),
-        html.Div(
-            className='graph4',
-            children=[                
-                # Person completing this form: bar chart
-                dcc.Graph(
-                    figure=px.bar(
-                        df_person,
-                        x='Person completing this form:',
-                        y='Count',
-                        color='Person completing this form:',
-                        text='Count'
-                    ).update_layout(
-                        title='Person Completing Form',
-                        xaxis_title='Person',
-                        yaxis_title='Count',
-                        title_x=0.5,
-                        font=dict(
-                            family='Calibri',
-                            size=17,
-                            color='black'
-                        )
-                    ).update_traces(
-                        textposition='auto',
-                        hovertemplate='<b>%{x}</b><br><b>Count</b>: %{y}<extra></extra>'
-                    )
-                )
             ]
         )
     ]
