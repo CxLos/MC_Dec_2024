@@ -309,7 +309,7 @@ html.Div(
             children=[
             html.Div(
                 className='high1',
-                children=['MarCom Events:']
+                children=['MarCom Hours:']
             ),
             html.Div(
                 className='circle',
