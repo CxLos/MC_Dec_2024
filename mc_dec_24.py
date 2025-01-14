@@ -288,13 +288,13 @@ html.Div(
                 children=['MarCom Events:']
             ),
             html.Div(
-                className='circle',
+                className='circle1',
                 children=[
                     html.Div(
                         className='hilite',
                         children=[
                             html.H1(
-                            className='high2',
+                            className='high3',
                             children=[marcom_events]
                     ),
                         ]
@@ -308,17 +308,17 @@ html.Div(
             className='graph22',
             children=[
             html.Div(
-                className='high1',
+                className='high2',
                 children=['MarCom Hours:']
             ),
             html.Div(
-                className='circle',
+                className='circle2',
                 children=[
                     html.Div(
                         className='hilite',
                         children=[
                             html.H1(
-                            className='high2',
+                            className='high4',
                             children=[marcom_hours]
                     ),
                         ]
