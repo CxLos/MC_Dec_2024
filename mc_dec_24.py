@@ -385,7 +385,8 @@ html.Div(
                             color='black'
                         )
                     ).update_traces(
-                        textposition='auto',
+                        textposition='outside',
+                        textangle=0, 
                         hovertemplate='<b>%{x}</b><br><b>Count</b>: %{y}<extra></extra>'
                     )
                 )
